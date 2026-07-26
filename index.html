@@ -116,6 +116,21 @@
     background: var(--accent); border: 3px solid var(--ink);
     box-shadow: 0 0 0 2px var(--accent);
   }
+  .milestone .place {
+  position: absolute;
+
+  /* Move it into the left-side space */
+  left: -9rem;
+  top: 1.15rem;
+
+  width: 6.2rem;
+  text-align: right;
+
+  color: var(--muted);
+  font-family: monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
   .edu-card {
     background: var(--panel); border: 1px solid var(--border);
     border-radius: 10px; padding: 1.5rem; transition: border-color .2s;
@@ -126,7 +141,34 @@
   .edu-card .date { font-family: monospace; font-size: 0.8rem; color: var(--muted); }
   .edu-card .org { color: var(--accent); font-size: 0.9rem; margin: 0.2rem 0 0.75rem; }
   .edu-card p { color: var(--muted); font-size: 0.95rem; }
-    
+  
+  /* Clickable education cards */
+  .clickable-card {
+    position: relative;
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      transform 0.2s,
+      background-color 0.2s;
+  }
+
+  .clickable-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .clickable-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  /* Small link text at the bottom */
+  .card-arrow {
+    margin-top: 1rem;
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 0.85rem;
+  }
 </style>
 </head>
 <body>
@@ -188,10 +230,14 @@ As a systems engineer, I am passionate about exploring the frontiers of AI and r
       <!-- ONE MILESTONE = one .milestone block. Copy/paste to add more.
           They read top-to-bottom, so put your Bachelor first. -->
       <div class="milestone">
-        <div class="mile-note">
-         <span class="note-sub">Nanjing, China</span>  
+        <div class="place">Nanjing, China</div>
         <div class="dot"></div>
-        <div class="edu-card">
+        <div
+          class="edu-card clickable-card"
+          data-href="SEU.html"
+          tabindex="0"
+          role="link"
+        >          
           <div class="row">
             <h3>B.Sc. in Electrical Science and Technology</h3>   <!-- EDIT ME -->
             <span class="date">2020/09 — 2024/06</span> <!-- EDIT ME -->
@@ -213,14 +259,20 @@ As a systems engineer, I am passionate about exploring the frontiers of AI and r
       </div>
 
       <div class="milestone">
+        <div class="place">Singapore</div>
         <div class="dot"></div>
-        <div class="edu-card">
-          <div class="row">
-            <h3>M.Sc. / Bootcamp / Certification</h3>
-            <span class="date">2022 — 2024</span>
+        <div
+          class="edu-card clickable-card"
+          data-href="nanyang-technological-university.html"
+          tabindex="0"
+          role="link"
+        >          
+        <div class="row">
+            <h3>M.Sc. Electronics Engineering</h3>
+            <span class="date">2024/08 — 2025/06</span>
           </div>
-          <div class="org">Institution Name</div>
-          <p>What you focused on or achieved.</p>
+          <div class="org">Nanyang Technological University</div>
+          <p>Multi-culture communication and collaboration in a diverse academic environment.</p>
         </div>
       </div>
     </div>
@@ -385,6 +437,29 @@ As a systems engineer, I am passionate about exploring the frontiers of AI and r
   });
 
   render();
+
+
+const clickableCards = document.querySelectorAll('.clickable-card');
+
+clickableCards.forEach(card => {
+  // Open the page when the card is clicked
+  card.addEventListener('click', event => {
+    // Do not navigate when clicking an interactive element
+    if (event.target.closest('a, button, summary, details')) {
+      return;
+    }
+
+    window.location.href = card.dataset.href;
+  });
+
+  // Make the card accessible using the keyboard
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      window.location.href = card.dataset.href;
+    }
+  });
+});
 </script>
 
 </body>
