@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ====== EDIT ME: browser tab title ====== -->
+<title>YU QINYUN</title>
+
+<style>
+  /* ============================================================
+     COLORS — change these hex codes to recolor the whole site.
+     ============================================================ */
+  :root {
+    --ink: #0d1117;      /* page background */
+    --panel: #161b22;    /* card background */
+    --border: #26303d;   /* borders */
+    --text: #c9d1d9;     /* main text */
+    --muted: #7d8896;    /* faded text */
+    --accent: #22d3ee;   /* highlight color (links, buttons) */
+    --accent-dim: #0e7490;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+  }
+  code, .mono { font-family: "SF Mono", "JetBrains Mono", "Fira Code", Consolas, monospace; }
+
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(13,17,23,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .brand { font-weight: 700; letter-spacing: -0.5px; }
+  nav .brand span { color: var(--accent); }
+  nav a { color: var(--muted); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; transition: color .2s; }
+  nav a:hover, nav a:focus { color: var(--accent); }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  h2 {
+    font-family: "SF Mono", "JetBrains Mono", monospace;
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent); margin-bottom: 2rem; font-weight: 500;
+  }
+  h2::before { content: "// "; color: var(--muted); }
+
+  .hero { padding: 7rem 0 5rem; }
+  .hero .kicker { font-family: monospace; color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; }
+  .hero h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1.05; letter-spacing: -2px; font-weight: 800; }
+  .hero h1 .accent { color: var(--accent); }
+  .hero .sub { font-size: 1.25rem; color: var(--muted); margin-top: 1.5rem; max-width: 620px; }
+  .hero .links { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 0.7rem 1.4rem; border-radius: 6px;
+    text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: all .2s;
+  }
+  .btn-primary { background: var(--accent); color: var(--ink); }
+  .btn-primary:hover { background: #67e8f9; }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .tag { background: var(--panel); border: 1px solid var(--border); padding: 0.4rem 0.9rem; border-radius: 6px; font-size: 0.85rem; font-family: monospace; }
+
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.25rem; transition: border-color .2s; }
+  .card:hover { border-color: var(--accent-dim); }
+  .card .row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }
+  .card h3 { font-size: 1.1rem; }
+  .card .date { font-family: monospace; font-size: 0.8rem; color: var(--muted); }
+  .card .org { color: var(--accent); font-size: 0.9rem; margin: 0.2rem 0 0.75rem; }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+  .card ul { color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; padding-left: 1.2rem; }
+
+  .blog-form { display: none; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+  .blog-form.open { display: flex; }
+  .blog-form input, .blog-form textarea {
+    width: 100%; background: var(--panel); border: 1px solid var(--border);
+    color: var(--text); padding: 0.7rem 1rem; border-radius: 6px; font-family: inherit; font-size: 0.95rem;
+  }
+  .blog-form textarea { min-height: 120px; resize: vertical; }
+  .post { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.25rem; }
+  .post h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+  .post .meta { font-family: monospace; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.9rem; }
+  .post .body { color: var(--text); white-space: pre-wrap; font-size: 0.95rem; }
+  .post .del { float: right; background: none; border: none; color: var(--muted); cursor: pointer; font-size: 0.8rem; }
+  .post .del:hover { color: #f87171; }
+  .empty { color: var(--muted); font-style: italic; }
+
+  footer { padding: 3rem 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto; } }
+
+/* ====== EDUCATION timeline ====== */
+  .journey { position: relative; padding-left: 2.5rem; }
+  /* the vertical "road" line */
+  .journey::before {
+    content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(var(--accent), var(--accent-dim));
+  }
+  .milestone { position: relative; margin-bottom: 1.5rem; }
+  .milestone:last-child { margin-bottom: 0; }
+  /* the dot on the road */
+  .milestone .dot {
+    position: absolute; left: -2.5rem; top: 1.4rem;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); border: 3px solid var(--ink);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .edu-card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.5rem; transition: border-color .2s;
+  }
+  .edu-card:hover { border-color: var(--accent-dim); }
+  .edu-card .row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }
+  .edu-card h3 { font-size: 1.1rem; }
+  .edu-card .date { font-family: monospace; font-size: 0.8rem; color: var(--muted); }
+  .edu-card .org { color: var(--accent); font-size: 0.9rem; margin: 0.2rem 0 0.75rem; }
+  .edu-card p { color: var(--muted); font-size: 0.95rem; }
+    
+</style>
+</head>
+<body>
+
+<!-- ====== NAV BAR: change "YourName" to your name ====== -->
+<nav>
+  <div class="brand">Your<span>Name</span></div>
+  <div>
+    <a href="#about">about</a>
+    <a href="#skills">skills</a>
+    <a href="#experience">experience</a>
+    <a href="#projects">projects</a>
+    <a href="#blog">blog</a>
+  </div>
+</nav>
+
+<!-- ====== HERO: your name, tagline, and top links ====== -->
+<header class="hero wrap">
+  <div class="kicker">Welcome to My Page!</div>
+  <!-- EDIT ME: your name and one-line tagline -->
+  <h1>YU QINYUN.<br><span class="accent">Unknown Explorer</span></h1>
+  <!-- EDIT ME: one or two sentences about what you do -->
+  <p class="sub">System engineer, specializing in AI and Robotics.</p>
+  <div class="links">
+    <!-- EDIT ME: put your real email after "mailto:" -->
+    <a class="btn btn-primary" href="mailto:qsx.yqy.nj@gmail.com">Get in touch</a>
+    <!-- EDIT ME: link to your resume PDF (upload it next to this file) -->
+    <a class="btn btn-ghost" href="CV.pdf" target="_blank" rel="noopener">Resume</a>
+    <!-- EDIT ME: your GitHub URL -->
+    <a class="btn btn-ghost" href="https://github.com/yuqrei2001-wq" target="_blank">GitHub</a>
+  </div>
+</header>
+
+<main>
+  <!-- ====== ABOUT ====== -->
+  <section id="about" class="wrap">
+    <h2>About</h2>
+    <!-- EDIT ME: 2-3 sentences about who you are and what you want -->
+    <p style="color:var(--muted); font-size:1.05rem; max-width:640px;">
+As a systems engineer, I am passionate about exploring the frontiers of AI and robotics. I thrive on solving complex problems and creating innovative solutions that push the boundaries of technology. My interests center on comprehensive data analysis, contributing to the interface development across multiple datasets, and integrating them into a unified system.    </p>
+  </section>
+
+  <!-- ====== SKILLS: add/remove <span class="tag"> lines ====== -->
+  <section id="skills" class="wrap">
+    <h2>Skills</h2>
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">Git</span>
+      <span class="tag">C++</span>
+      <span class="tag">C</span>
+
+    </div>
+  </section>
+
+  <!-- ====== EDUCATION: a vertical journey timeline ====== -->
+  <section id="education" class="wrap">
+    <h2>Education</h2>
+    <div class="journey">
+      <!-- ONE MILESTONE = one .milestone block. Copy/paste to add more.
+          They read top-to-bottom, so put your Bachelor first. -->
+      <div class="milestone">
+        <div class="mile-note">
+         <span class="note-sub">Nanjing, China</span>  
+        <div class="dot"></div>
+        <div class="edu-card">
+          <div class="row">
+            <h3>B.Sc. in Electrical Science and Technology</h3>   <!-- EDIT ME -->
+            <span class="date">2020/09 — 2024/06</span> <!-- EDIT ME -->
+          </div>
+          <div class="org">Southeast University, Chien-Shiung Wu College</div>   <!-- EDIT ME -->
+          <p>GPA: 3.5/4.0</p> <!-- EDIT ME -->
+          <div class="fold">
+            <details>
+              <summary>Software knowledge</summary>
+              <p>Software knowledge spanning from low-level compilation to C++ and Python programming, as well as data structures and algorithm design, with hands-on experience building simple machine learning models.</p>
+            </details>
+
+            <details>
+              <summary>Hardware knowledge</summary>
+              <p>Hardware knowledge spanning from the smallest scale (MOSFET and BJT physics) to basic electronics (operational amplifier circuit design with transistors), up to large-scale integrated circuit design.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="dot"></div>
+        <div class="edu-card">
+          <div class="row">
+            <h3>M.Sc. / Bootcamp / Certification</h3>
+            <span class="date">2022 — 2024</span>
+          </div>
+          <div class="org">Institution Name</div>
+          <p>What you focused on or achieved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== EDUCATION: copy a whole .card block to add more jobs ====== -->
+  <section id="education" class="wrap">
+    <h2>Education</h2>
+
+    <!-- ONE JOB = one .card block. Copy/paste the whole thing to add another. -->
+    <div class="card">
+      <div class="row">
+        <h3>Nanyang Technological University</h3>
+        <span class="date">2024/08 — 2025/06</span>
+      </div>
+      <div class="org">Master of Electronics</div>
+      <ul>
+        <li>Multi-culture communication and collaboration in a diverse academic environment.</li>
+      </ul>
+    </div>
+  </section>
+
+    <div class="card">
+      <div class="row">
+        <h3>The University of Tokyo</h3>              <!-- EDIT ME -->
+        <span class="date">2025/10 — 2027/09</span>  <!-- EDIT ME -->
+      </div>
+      <div class="org">Master of Electrical Engineering</div>  <!-- EDIT ME -->
+      <ul>
+        <li>Aiming at optimization of cooling performance and troubleshooting for 'dryout', build CFD models for two-phase microchannel chip cooling system.</li>  <!-- EDIT ME -->
+        <li>Python programming for data analysis and simulation automation.</li>       <!-- EDIT ME -->
+      </ul>
+      <p style="font-size:0.8rem; color:var(--muted); margin-top:0.75rem;">
+        Click to view the original model of our microchannel cooling system.
+        <a class="btn btn-ghost" href="https://www.sciencedirect.com/science/article/pii/S2666386425001195?via%3Dihub" target="_blank" style="margin-left:0.5rem; padding:0.3rem 0.8rem; font-size:0.8rem;">Original Model</a>
+      </p>
+    </div>
+
+  <!-- ====== PROJECTS: copy a .card block to add more ====== -->
+  <section id="projects" class="wrap">
+    <h2>Projects</h2>
+    <div class="card">
+      <div class="row">
+        <h3>Project Name</h3>  <!-- EDIT ME -->
+        <a class="date" href="#" target="_blank" style="text-decoration:none;">source &rarr;</a>  <!-- EDIT ME: link -->
+      </div>
+      <p style="margin-top:0.5rem;">What it does, the problem it solves, and the stack you used.</p>  <!-- EDIT ME -->
+    </div>
+    <div class="card">
+      <div class="row">
+        <h3>Another Project</h3>
+        <a class="date" href="#" target="_blank" style="text-decoration:none;">live &rarr;</a>
+      </div>
+      <p style="margin-top:0.5rem;">Short description here.</p>
+    </div>
+  </section>
+
+  <!-- ====== BLOG: nothing to edit here — you add posts from the page itself ====== -->
+  <section id="blog" class="wrap">
+    <h2>Blog</h2>
+    <button class="btn btn-ghost" id="toggleForm" style="margin-bottom:1.5rem;">+ New post</button>
+
+    <div class="blog-form" id="blogForm">
+      <input type="text" id="postTitle" placeholder="Post title">
+      <textarea id="postBody" placeholder="Write your post..."></textarea>
+      <div style="display:flex; gap:0.75rem;">
+        <button class="btn btn-primary" id="savePost">Publish</button>
+        <button class="btn btn-ghost" id="cancelPost">Cancel</button>
+      </div>
+    </div>
+
+    <div id="postList"></div>
+  </section>
+</main>
+
+<!-- ====== FOOTER: your name + email ====== -->
+<footer>
+  <p>Built by Your Name &middot; <a href="mailto:you@email.com">you@email.com</a></p>
+</footer>
+
+<script>
+  /* ============================================================
+     BLOG — you don't need to edit this. Add posts using the
+     "+ New post" button on the page. Posts are saved in your
+     browser (localStorage), so they stay after you reload.
+
+     Note: posts are saved per-browser, so they show up only in
+     the browser where you wrote them. For a blog that everyone
+     sees the same way, you'd need a static site generator or a
+     backend later on.
+     ============================================================ */
+
+  const STORAGE_KEY = 'my_portfolio_posts';
+
+  // First-time visitors see this example post; after that, saved posts load.
+  let posts = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [
+    { id: 1, title: "Welcome to my blog", date: "Jan 2026",
+      body: "This is where I write about what I'm building and learning. Click \"New post\" to add your own." }
+  ];
+
+  function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(posts)); }
+
+  const postList  = document.getElementById('postList');
+  const form      = document.getElementById('blogForm');
+  const toggleBtn = document.getElementById('toggleForm');
+  const titleIn   = document.getElementById('postTitle');
+  const bodyIn    = document.getElementById('postBody');
+
+  function render() {
+    if (posts.length === 0) {
+      postList.innerHTML = '<p class="empty">No posts yet. Write your first one!</p>';
+      return;
+    }
+    postList.innerHTML = posts.map(p => `
+      <article class="post">
+        <button class="del" data-id="${p.id}" aria-label="Delete post">delete</button>
+        <h3>${escapeHtml(p.title)}</h3>
+        <div class="meta">${p.date}</div>
+        <div class="body">${escapeHtml(p.body)}</div>
+      </article>
+    `).join('');
+  }
+
+  function escapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    form.classList.toggle('open');
+    if (form.classList.contains('open')) titleIn.focus();
+  });
+
+  document.getElementById('cancelPost').addEventListener('click', () => {
+    form.classList.remove('open');
+    titleIn.value = ''; bodyIn.value = '';
+  });
+
+  document.getElementById('savePost').addEventListener('click', () => {
+    const title = titleIn.value.trim();
+    const body  = bodyIn.value.trim();
+    if (!title || !body) return;
+    posts.unshift({
+      id: Date.now(),
+      title, body,
+      date: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+    });
+    save();
+    titleIn.value = ''; bodyIn.value = '';
+    form.classList.remove('open');
+    render();
+  });
+
+  postList.addEventListener('click', (e) => {
+    if (e.target.classList.contains('del')) {
+      const id = Number(e.target.dataset.id);
+      posts = posts.filter(p => p.id !== id);
+      save();
+      render();
+    }
+  });
+
+  render();
+</script>
+
+</body>
+</html>
