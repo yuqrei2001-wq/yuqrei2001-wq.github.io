@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 906" font-family="'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="Research framework: shape optimization of a microchannel heat sink">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#374151" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="930" height="906" rx="14" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="465" y="36" text-anchor="middle" font-size="23" font-weight="700" fill="#111827">Research Framework</text>
+  <text x="465" y="60" text-anchor="middle" font-size="13.5" fill="#6B7280">Shape optimization of a microchannel heat sink for electronics cooling</text>
+
+  <!-- ===================== CARD 1 ===================== -->
+  <rect x="60" y="90" width="800" height="124" rx="10" fill="#FFFFFF" stroke="#3B5BA5" stroke-width="1.4"/>
+  <circle cx="86" cy="116" r="15" fill="#3B5BA5"/>
+  <text x="86" y="121" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">1</text>
+  <text x="112" y="121" font-size="16.5" font-weight="700" fill="#3B5BA5">Physical Model &amp; Geometry</text>
+  <rect x="84" y="140" width="372" height="60" rx="7" fill="#EDF1FA"/>
+  <text x="98" y="164" font-size="13.5" font-weight="600" fill="#24303F">Parametric wavy microchannel</text>
+  <text x="98" y="184" font-size="12" fill="#4B5563">Bézier-curve walls: X1, h, period, buffer</text>
+  <rect x="468" y="140" width="368" height="60" rx="7" fill="#EDF1FA"/>
+  <text x="482" y="164" font-size="13.5" font-weight="600" fill="#24303F">Conjugate heat transfer</text>
+  <text x="482" y="184" font-size="12" fill="#4B5563">chip flux → solid conduction → coolant</text>
+
+  <path d="M465 216 L465 240" fill="none" stroke="#374151" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ===================== CARD 2 ===================== -->
+  <rect x="60" y="244" width="800" height="114" rx="10" fill="#FFFFFF" stroke="#0F8B8D" stroke-width="1.4"/>
+  <circle cx="86" cy="270" r="15" fill="#0F8B8D"/>
+  <text x="86" y="275" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">2</text>
+  <text x="112" y="275" font-size="16.5" font-weight="700" fill="#0F8B8D">CFD Simulation — Ansys Fluent</text>
+  <rect x="84" y="292" width="372" height="56" rx="7" fill="#E7F4F4"/>
+  <text x="98" y="316" font-size="13.5" font-weight="600" fill="#24303F">Mesh generation &amp; quality control</text>
+  <text x="98" y="335" font-size="12" fill="#4B5563">orthogonal quality; curvature + proximity</text>
+  <rect x="468" y="292" width="368" height="56" rx="7" fill="#E7F4F4"/>
+  <text x="482" y="316" font-size="13.5" font-weight="600" fill="#24303F">Laminar · steady · conjugate solve</text>
+  <text x="482" y="335" font-size="12" fill="#4B5563">convergence + flux-balance validation</text>
+
+  <path d="M465 360 L465 384" fill="none" stroke="#374151" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ===================== CARD 3 ===================== -->
+  <rect x="60" y="388" width="800" height="170" rx="10" fill="#FFFFFF" stroke="#2E9E5B" stroke-width="1.4"/>
+  <circle cx="86" cy="414" r="15" fill="#2E9E5B"/>
+  <text x="86" y="419" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">3</text>
+  <text x="112" y="419" font-size="16.5" font-weight="700" fill="#2E9E5B">Shape Optimization</text>
+  <rect x="84" y="436" width="372" height="108" rx="7" fill="#EAF6EF"/>
+  <text x="98" y="460" font-size="13.5" font-weight="600" fill="#24303F">Parametric optimization (optiSLang)</text>
+  <text x="98" y="482" font-size="12" fill="#4B5563">DOE → metamodel (MOP) → sensitivity (CoP)</text>
+  <text x="98" y="503" font-size="12" fill="#4B5563">finding: h dominant, X1 weak</text>
+  <text x="98" y="524" font-size="12" fill="#4B5563" font-style="italic">→ reaches a parametric ceiling</text>
+  <rect x="468" y="436" width="368" height="108" rx="7" fill="#EAF6EF"/>
+  <text x="482" y="460" font-size="13.5" font-weight="600" fill="#24303F">Adjoint optimization (free-form)</text>
+  <text x="482" y="482" font-size="12" fill="#4B5563">node-based mesh morphing</text>
+  <text x="482" y="503" font-size="12" fill="#4B5563">gradient from one extra solve</text>
+  <text x="482" y="524" font-size="12" fill="#4B5563" font-style="italic">→ designs beyond the ceiling</text>
+
+  <!-- feedback loop: optimization drives repeated CFD -->
+  <path d="M860 474 C902 466 902 316 860 300" fill="none" stroke="#6B7280" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowg)"/>
+  <text x="912" y="390" text-anchor="middle" font-size="11" fill="#6B7280" transform="rotate(90 912 390)">design-point loop</text>
+
+  <path d="M465 560 L465 584" fill="none" stroke="#374151" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ===================== CARD 4 ===================== -->
+  <rect x="60" y="588" width="800" height="126" rx="10" fill="#FFFFFF" stroke="#C77D0A" stroke-width="1.4"/>
+  <circle cx="86" cy="614" r="15" fill="#C77D0A"/>
+  <text x="86" y="619" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">4</text>
+  <text x="112" y="619" font-size="16.5" font-weight="700" fill="#C77D0A">Design Objectives</text>
+  <rect x="84" y="636" width="241" height="66" rx="7" fill="#FBF1E1"/>
+  <text x="204" y="664" text-anchor="middle" font-size="13" font-weight="600" fill="#24303F">Minimize wall</text>
+  <text x="204" y="683" text-anchor="middle" font-size="12.5" fill="#4B5563">temperature (avg / peak)</text>
+  <rect x="339" y="636" width="241" height="66" rx="7" fill="#FBF1E1"/>
+  <text x="459" y="659" text-anchor="middle" font-size="13" font-weight="600" fill="#24303F">Maximize flow rectification</text>
+  <text x="459" y="678" text-anchor="middle" font-size="12.5" fill="#4B5563">diodicity — Tesla-valve</text>
+  <text x="459" y="694" text-anchor="middle" font-size="12.5" fill="#4B5563">benchmark</text>
+  <rect x="594" y="636" width="241" height="66" rx="7" fill="#FBF1E1"/>
+  <text x="714" y="664" text-anchor="middle" font-size="13" font-weight="600" fill="#24303F">Suppress backflow</text>
+  <text x="714" y="683" text-anchor="middle" font-size="12.5" fill="#4B5563">&amp; recirculation</text>
+
+  <path d="M465 716 L465 740" fill="none" stroke="#374151" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ===================== CARD 5 ===================== -->
+  <rect x="60" y="744" width="800" height="140" rx="10" fill="#FFFFFF" stroke="#6D5BD0" stroke-width="1.4"/>
+  <circle cx="86" cy="770" r="15" fill="#6D5BD0"/>
+  <text x="86" y="775" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">5</text>
+  <text x="112" y="775" font-size="16.5" font-weight="700" fill="#6D5BD0">Analysis &amp; Validation</text>
+  <rect x="84" y="792" width="241" height="80" rx="7" fill="#EFEDFB"/>
+  <text x="204" y="820" text-anchor="middle" font-size="13" font-weight="600" fill="#24303F">Flow fields</text>
+  <text x="204" y="839" text-anchor="middle" font-size="12" fill="#4B5563">velocity, streamlines,</text>
+  <text x="204" y="855" text-anchor="middle" font-size="12" fill="#4B5563">recirculation zones</text>
+  <rect x="339" y="792" width="241" height="80" rx="7" fill="#EFEDFB"/>
+  <text x="459" y="820" text-anchor="middle" font-size="13" font-weight="600" fill="#24303F">Thermal field</text>
+  <text x="459" y="839" text-anchor="middle" font-size="12" fill="#4B5563">hot-spot</text>
+  <text x="459" y="855" text-anchor="middle" font-size="12" fill="#4B5563">localization</text>
+  <rect x="594" y="792" width="241" height="80" rx="7" fill="#EFEDFB"/>
+  <text x="714" y="820" text-anchor="middle" font-size="13" font-weight="600" fill="#24303F">Performance metrics</text>
+  <text x="714" y="839" text-anchor="middle" font-size="12" fill="#4B5563">ΔT, Δp, Reynolds</text>
+  <text x="714" y="855" text-anchor="middle" font-size="12" fill="#4B5563">number, diodicity</text>
+</svg>

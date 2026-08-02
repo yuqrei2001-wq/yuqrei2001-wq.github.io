@@ -7,7 +7,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Southeast University | YU QINYUN</title>
+  <title>Nanyang Technological University | YU QINYUN</title>
 
   <style>
     :root {
@@ -84,6 +84,29 @@
     li {
       color: var(--muted);
     }
+
+    .exchange-photo {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-top: 1.5rem;
+      display: block;
+    }
+
+    .photo-caption {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-family: monospace;
+      margin-top: 0.5rem;
+    }
+    .project-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+  border-bottom: 1px solid var(--border);
+}
   </style>
 </head>
 
@@ -94,52 +117,74 @@
     </a>
 
     <header>
-      <h1>M.Sc. in Electronics Engineering</h1>
+      <h1>M.Sc. Electronics Engineering</h1>
 
       <p class="school">
         Nanyang Technological University
       </p>
 
       <p class="date">
-        August 2024 — June 2025 · Singaporegit
+        August 2024 — June 2025 · Singapore
       </p>
     </header>
 
     <section>
       <h2>Overview</h2>
+      <img
+        class="exchange-photo"
+        src="images/singapore.jpg"
+        alt="With classmates at NTU"
+      >
 
       <p>
-        Introduce your university experience, academic interests,
-        degree program, and important achievements here.
+        Studying at NTU marked my first time living abroad alone for
+        an extended period, immersed in a culture and language
+        different from my own. Beyond any single project, this
+        experience taught me how to navigate unfamiliar environments
+        with confidence — engaging with people from diverse
+        backgrounds, adapting to new ways of thinking, and broadening
+        my perspective on how problems can be approached differently
+        across cultures. It was a small but meaningful step toward
+        the wider world, one that shaped how I collaborate with
+        people from different backgrounds in every project since.
       </p>
+<div class="card project-card">
+
+  <video
+    class="project-video"
+    controls
+    muted
+    loop
+    playsinline
+  >
+ <source src="videos/firework.mp4" type="video/mp4">
+
+  </video>
+
+  <div class="project-content">
+    <div class="row">
+      <h3>Singapore National Day Fireworks Celebration</h3>
+    </div>
+
+  </div>
+
+</div>
     </section>
 
     <section>
-      <h2>Software Knowledge</h2>
+      <h2>Life in a New Environment</h2>
 
       <p>
-        Describe your experience with C++, Python, data structures,
-        algorithms, machine learning, and software development.
+        Living and studying in Singapore exposed me to a genuinely
+        multicultural environment, with classmates and collaborators
+        from across Southeast Asia and beyond. Communicating and
+        working across language and cultural differences pushed me
+        to become a more adaptable communicator, and gave me a
+        firsthand sense of how the same technical problem can be
+        approached from very different starting assumptions
+        depending on one's background.
       </p>
-    </section>
 
-    <section>
-      <h2>Hardware Knowledge</h2>
-
-      <p>
-        Describe your knowledge of MOSFETs, BJTs, analog circuits,
-        operational amplifiers, and integrated circuit design.
-      </p>
-    </section>
-
-    <section>
-      <h2>Projects and Achievements</h2>
-
-      <ul>
-        <li>Add an important university project.</li>
-        <li>Add an award, paper, competition, or internship.</li>
-        <li>Add relevant technical skills.</li>
-      </ul>
     </section>
   </main>
 </body>

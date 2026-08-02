@@ -7,7 +7,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Southeast University | YU QINYUN</title>
+  <title>The University of Tokyo | YU QINYUN</title>
 
   <style>
     :root {
@@ -84,6 +84,22 @@
     li {
       color: var(--muted);
     }
+
+    .research-photo {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-top: 1.5rem;
+      display: block;
+    }
+
+    .photo-caption {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-family: monospace;
+      margin-top: 0.5rem;
+    }
   </style>
 </head>
 
@@ -94,52 +110,106 @@
     </a>
 
     <header>
-      <h1>B.Sc. in Electrical Science and Technology</h1>
+      <h1>M.Sc. Electrical Engineering</h1>
 
       <p class="school">
-        Southeast University, Chien-Shiung Wu College
+        The University of Tokyo, Nomura Lab
+              <p>   
+        <a
+          href="https://webpark2343.sakura.ne.jp/"
+          target="_blank"
+          rel="noopener"
+          style="color: var(--accent);"
+        >
+          View lab website
+        </a>
+      </p>
+
       </p>
 
       <p class="date">
-        September 2020 — June 2024 · Nanjing, China
+        2025 — Present · Tokyo, Japan
       </p>
     </header>
 
     <section>
-      <h2>Overview</h2>
+      <h2>Research Overview</h2>
 
       <p>
-        Introduce your university experience, academic interests,
-        degree program, and important achievements here.
+        I am currently a Master's student and CFD engineer in the
+        Nomura Lab, researching AI-driven shape optimization for a
+        microchannel-based chip cooling system, targeting thermal
+        management for advanced semiconductors. As chip performance
+        and integration density continue to increase, heat
+        dissipation has become a critical bottleneck — and
+        efficiently cooling the chip is now a key factor determining
+        next-generation device performance.
+        <br>
+        <a
+          href="https://www.sciencedirect.com/science/article/pii/S2666386425001195?via%3Dihub"
+          target="_blank"
+          rel="noopener"
+          style="color: var(--accent);"
+        >
+          View paper for the original microchannel design
+        </a>
+
+      </p>
+
+    </section>
+
+    <section>
+      <h2>Technical Challenge</h2>
+
+      <p>
+        The system uses two-phase (gas-liquid) cooling to achieve
+        high cooling performance, but this comes with a key
+        challenge: bubbles forming inside the microchannel can cause
+        localized dryout, where the liquid film breaks down and
+        cooling performance drops sharply in that region. I am
+        responsible for designing and optimizing the microchannel
+        component — the core of the system — to mitigate this
+        effect while maintaining high overall performance.
       </p>
     </section>
 
     <section>
-      <h2>Software Knowledge</h2>
-
-      <p>
-        Describe your experience with C++, Python, data structures,
-        algorithms, machine learning, and software development.
-      </p>
-    </section>
-
-    <section>
-      <h2>Hardware Knowledge</h2>
-
-      <p>
-        Describe your knowledge of MOSFETs, BJTs, analog circuits,
-        operational amplifiers, and integrated circuit design.
-      </p>
-    </section>
-
-    <section>
-      <h2>Projects and Achievements</h2>
+      <h2>Approach</h2>
 
       <ul>
-        <li>Add an important university project.</li>
-        <li>Add an award, paper, competition, or internship.</li>
-        <li>Add relevant technical skills.</li>
+        <li>
+          <strong>CFD Simulation:</strong> Modeling two-phase flow
+          and bubble behavior within candidate microchannel
+          geometries to evaluate cooling performance and dryout risk.
+        </li>
+        <li>
+          <strong>AI-Driven Optimization:</strong> Applying machine
+          learning algorithms to explore microchannel shapes that
+          account for bubble dynamics and suppress dryout,
+          going beyond designs a manual, trial-and-error approach
+          would likely reach.
+        </li>
+        <li>
+          <strong>Workflow Automation:</strong> Built an automated
+          simulation workflow using Python to accelerate design
+          iteration, significantly reducing the manual effort
+          required per design cycle.
+        </li>
+        <li>
+          <strong>Cross-Team Collaboration:</strong> Since this is a
+          multi-component system, I work closely with the designers
+          of other subsystems to ensure my design choices remain
+          compatible with the rest of the system and feasible for
+          fabrication.
+        </li>
       </ul>
+
+      <img
+        class="research-photo"
+        src="images/microchannel.jpeg"
+        alt="CFD simulation results"
+      >
+      <p class="photo-caption">CFD simulation workflow</p>
     </section>
   </main>
 </body>

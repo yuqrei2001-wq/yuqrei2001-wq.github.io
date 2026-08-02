@@ -84,6 +84,21 @@
     li {
       color: var(--muted);
     }
+    .project-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+    .project-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--border);
+    }
+
+    .project-content {
+    padding: 1.5rem;
+    }
   </style>
 </head>
 
@@ -109,38 +124,138 @@
       <h2>Overview</h2>
 
       <p>
-        Introduce your university experience, academic interests,
-        degree program, and important achievements here.
+        A new step to the broader world.
       </p>
     </section>
-
     <section>
-      <h2>Software Knowledge</h2>
+      <h2>Year 1</h2>
 
       <p>
-        Describe your experience with C++, Python, data structures,
-        algorithms, machine learning, and software development.
+        <li>C programming: first got in touch with programming. Totally different from what I learnt in high school, instead of using a formula to solve a preoblem, building solutions with considerations of different conditions and making use of the strong calculation skills of computer to do something people are unable.</li>
+        <li>Theoretical basics:  Math, physics and electrical circuits</li>
       </p>
-    </section>
-
-    <section>
-      <h2>Hardware Knowledge</h2>
-
+      <h3>Flight Fighting Game</h3>
+      <p>Build a flight fighting game using MFC. The single player and multiplayer modes were implemented. I am in charge of the building of the multiplayer model, focusing on the control logics. We defined 2 customer class for the player A and player B to realize the control of different players.</p>
+      
+      
+      <h3>Student Activities</h3>
       <p>
-        Describe your knowledge of MOSFETs, BJTs, analog circuits,
-        operational amplifiers, and integrated circuit design.
-      </p>
+        Entered the Chien-Shiung WU College Science Association, so happy to meet many new friends and have the chance to contribute to holding activities.</p>
+
+
+    </section>
+        <section>
+      <h2>Year 2</h2>
+        <p>The beginning of the challenging and struggling circuit experiments. If I need to choose something that make composition of my undergraduation period, that would be the endless failure and relearn of the electrical circuits.</p>
+      <p>
+        <li>analog circuits theory: start from op-amp, "what is this and where does this come from......?" completely had no idea.  </li>
+        <li>analog circuits experiments: multi-stage amplifiers, filters, and oscillators. The most difficult thing is the experiments depend on the </li>
+        <li>The most difficult thing: how to make balance between the deriavation of the practical circuit and the theoretical model. Firstly realized that different from what we have learnt in the lectures and books, we need to consider the real-world limitations and imperfections and learn how to complement it.</li>
+    </p>
+            <div class="project-content">
+      <h3>Math Competition</h3>
+      <p>Following the interest in mathematics, I participated in the national math competition and won the first prize. Swimming in the sea of mathematics, I found the happiness of exploring something unknown.</p>
+        </div>
+        <div class="project-content">
+      <h3>Gain Varying Amplifier Experiment</h3>
+  </div>
+        <img
+    class="project-photo"
+    src="images/gainvary.png"
+    alt="Gain Varying Experiment"
+  >
+      <h3>Student Activities</h3>
+      <p>Became the minister of the publicity department of Chien-Shiung Wu College Science Association. Transferring from completling the missions given to me to developing interesting ideas and mission management. For instance, the promotion of the drone interest events with the questionnaire and event preview SNS.</p>
+        <div class="project-content">
+      <h3>SEU seen from sky</h3>
+  </div>
+        <img
+    class="project-photo"
+    src="images/drone.jpg"
+    alt="SEU seen from sky"
+  >
+
     </section>
 
+<section>
+      <h2>Year 3</h2>
+      <p>With advanced knowledge base, I started to get in touch with some interesting projects with complex system design.</p>
+      <p>
+        <li>Digital circuits theory: start from logic gates, flip-flops, counters, and registers. The most important thing is to learn how to use the basic logic gates to build more complex circuits.</li>
+        <li>Digital circuits experiments: multi-stage digital circuits, counters, and registers. The most difficult thing is the experiments depend on the theoretical model, but we need to consider the real-world limitations and imperfections and learn how to complement it.</li>
+        <li>Microcontroller: start from the basics of microcontroller programming, learn how to use the microcontroller to control the digital circuits.</li>
     <section>
       <h2>Projects and Achievements</h2>
+<div class="card project-card">
+  <img
+    class="project-photo"
+    src="images/car.jpg"
+    alt="Our car"
+  >
 
-      <ul>
-        <li>Add an important university project.</li>
-        <li>Add an award, paper, competition, or internship.</li>
-        <li>Add relevant technical skills.</li>
-      </ul>
+  <div class="project-content">
+    <div class="row">
+      <h3>Electromagnetic Car System Building</h3>
+
+    </div>
+
+    <p style="margin-top:0.5rem;">
+    We built a car system from zero using the electromagnetic signal of the road to judge the road conditions and control the car to move forward, turn left, turn right, and stop. 
+    <ul>
+        <li>Signal Input: The electromagetic signals are detected by conductances and the detected analog signals are converted to digital signals.</li>
+        <li>Signal Processing: The digital signals are processed by the microcontroller and the road conditions are determined. The control signal is generated following the PID control algorithms.</li>
+        <li>Signal Output: The processed signals are output to the motor and servo to control the car's movement.</li>
+        <li>Parameters Debugging: P, I and D parameters are debugged to achieve the best control effect. The trade-off between robustness to envrionment and speed is mainly considered.</li>
+    </ul>
+
+    </p>
+          <img
+    class="project-photo"
+    src="images/car.png"
+    alt="framework"
+  >
+      <h3>Troubleshooting: </h3>
+      <p>The night before competition, our smart car suddenly failed. I methodically isolated the sensor, communication, and power subsystems, traced the fault to damaged wiring, and fixed it in time to compete.</p>
+
+  </div>
+</div>     
     </section>
+    <h2>Year 4</h2>
+<section>
+  <div class="card project-card">
+    <img
+      class="project-photo"
+      src="images/casing.gif"
+      alt="Ventilation Design"
+    >
+
+    <div class="project-content">
+      <div class="row">
+        <h3>Graduate Research: Current Sensor Shell Design and Shape Optimization</h3>
+      </div>
+
+      <p style="margin-top:0.5rem;">
+      The existing current sensor design wraps around the cable, but in rainy conditions, moisture becomes trapped around the cable for extended periods, leading to long-term corrosion.
+      <ul>
+          <li>Problem Identification: Analyzed the failure mode and traced it to poor natural ventilation in the shell's original geometry, which allowed moisture to accumulate rather than drain or evaporate.</li>
+          <li>CFD Simulation: Modeled airflow and moisture behavior around candidate shell geometries to evaluate ventilation performance before physical prototyping.</li>
+          <li>Shape Optimization: Applied optimization algorithms to iteratively refine the ventilation channel geometry, balancing improved airflow against manufacturing constraints.</li>
+          <li>Outcome: Proposed a redesigned shell with an improved ventilation channel that reduces moisture retention around the cable, mitigating long-term corrosion risk.</li>
+<li><strong style="color: #59a3ec;">Started from a real-world problem, collaborated with industry partners and other professional departments, and delivered a proposed design through to project completion. Beyond the technical outcome, I found this a valuable experience in navigating a complete project lifecycle from start to finish.</strong></li>      <h3>Publication:</h3>
+      <p>   
+        This work was accepted as a paper at ICEPG 2024.
+        <a
+          href="https://ieeexplore.ieee.org/abstract/document/10775466"
+          target="_blank"
+          rel="noopener"
+          style="color: var(--accent);"
+        >
+          View paper
+        </a>
+      </p>
+    </div>
+  </div>
+</section>    
   </main>
 </body>
 </html>
